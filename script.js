@@ -28,3 +28,10 @@ window.onclick = function(event) {
         closeGame();
     }
 }
+
+// --- FUNCIÓN PARA EL MENÚ DE CELULARES (HAMBURGUESA) ---
+function toggleMenu() {
+    const nav = document.getElementById("navMenu");
+    // "toggle" funciona como un interruptor: si está apagado lo prende, si está prendido lo apaga.
+    nav.classList.toggle("active");
+}

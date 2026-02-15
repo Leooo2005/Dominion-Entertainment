@@ -389,3 +389,53 @@ body::before {
     background: var(--primary); 
     box-shadow: 0 0 10px var(--primary); /* Brilla al tocarla */
 }
+
+/* --- MENÚ HAMBURGUESA (Oculto en PC por defecto) --- */
+.menu-toggle {
+    display: none;
+    color: var(--primary);
+    font-size: 30px;
+    cursor: pointer;
+    text-shadow: var(--glow-primary);
+    transition: 0.3s;
+}
+
+.menu-toggle:hover {
+    color: #fff;
+}
+
+/* --- MODO CELULAR (Se activa si la pantalla es menor a 768px) --- */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Permite que el menú caiga hacia abajo */
+        padding: 15px 5%;
+    }
+
+    header h1 {
+        font-size: 18px; /* Título más pequeño para que no choque */
+    }
+
+    .menu-toggle {
+        display: block; /* Muestra las 3 rayitas */
+    }
+
+    nav {
+        display: none; /* Oculta el menú normal */
+        width: 100%;
+        flex-direction: column; /* Pone los botones uno debajo del otro */
+        text-align: center;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    nav a  {
+        display: block; /* Hace que el botón sea más facil de tocar */
+        padding: 12px;
+    }
+
+    /* Esta clase es la que encenderá el JavaScript */
+    nav.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+    }
+}
