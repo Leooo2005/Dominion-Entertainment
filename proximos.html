@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Próximos Lanzamientos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Dominion Entertainment™</h1>
+        <nav>
+            <a href="index.html">Empresa</a>
+            <a href="juegos.html">Juegos</a>
+            <a href="proximos.html" style="border-bottom: 2px solid var(--secondary);">Lanzamientos</a>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h2>// Roadmap de Desarrollo</h2>
+        
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Unholy Broadcast</h3>
+                    <span style="background: var(--secondary); color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 3px;">EN PRODUCCIÓN</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: var(--text-dim); font-size: 0.9rem;">Lanzamiento Full</span><br>
+                    <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">2030</span>
+                </div>
+            </div>
+            
+            <p>
+                Una experiencia de terror inmersiva. Sintoniza frecuencias prohibidas y descubre lo que se esconde en la estática.
+            </p>
+            
+            <button onclick="openGame()" class="btn">Leer Sinópsis del juego >></button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Dominion Entertainment. Systems Online.</p>
+    </footer>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>// UNHOLY BROADCAST - CLASSIFIED</h2>
+                <span class="close-btn" onclick="closeGame()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="media-container" style="padding: 0; border: none;">
+                  <img src="assets/img/Portada de juego alternativo.png" alt="Portada Unholy Broadcast" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">  
+                </div>
+
+                <h3>Sinópsis</h3>
+                <p>
+                  En <strong>Unholy Broadcast</strong>,El polvo se pega a la piel, el ruido perfora los oidos y la humillación se convierte en rutina.
+                    Cada jornada bajo tierra no solo desgasta el cuerpo, también rompe algo más profundo. Allí abajo no hay nombres, solo órdenes.
+                    Pero en la oscuridad de su habitación, una pantalla ilumina otra vida. Un explorador urbano camina sin miedo por lugares olvidados, 
+                    gana seguidores, reconocimiento… existencia. Mientras uno sobrevive, el otro es visto.
+
+                    Cuando aparece una última publicación: la imagen de un barrio abandonado y ningún video después, algo se enciende. 
+                    Una oportunidad. Un escape. Tal vez el comienzo de ser alguien.
+                    Cámara en mano, decides adentrarte en el distrito que parece suspendido en el tiempo. Casas abiertas, calles vacías… 
+                    y una sensación persistente de que no estás solo. Voces que no deberían estar ahí. Sombras que no deberían moverse.
+                
+                </p>
+
+                <p>
+                 <spam class="highlight">Vivir humillado</spam> o <spam class="highlight">buscar tu propio destino.</spam> Es tu decisión. Pero ten cuidado: <em>El jefe no tolera la desobediencia.</em>
+                </p>
+
+                <p>
+                    Tienes que tener cuidado con tu jefe: <em>Te atrapa si no haces nada.</em>
+                </p>
+
+                <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+
+                <p style="text-align: center; color: var(--secondary); font-style: italic;">
+                    Próximamente disponible en Steam.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+/* --- FUENTES IMPORTADAS --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+/* --- VARIABLES DE COLOR (Tema Cyberpunk) --- */
+:root {
+    --bg-dark: #050505;  /* Negro casi puro */
+    --bg-panel: #13131f; /* Azul oscuro para tarjetas */
+    --primary: #00f3ff; /* Cian Neón */
+    --secondary: #bd00ff; /* Violeta Neón */
+    --text-main: #e0e6ed; /* Blanco/Gris claro */
+    --text-dim: #94a3b8; /* Gris apagado */
+    --glow-primary: 0 0 10px rgba(0, 243, 255, 0.6), 0 0 20px rgba(0, 243, 255, 0.3);
+    --glow-secundary: 0 0 10px rgba(189, 0, 255, 0.6), 0 0 20px rgba(189, 0, 255, 0.3);
+}
+
+/* --- ESTILOS GENERALES --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rajdhani', sans-serif; /* Fuente tecnológica pero legible */
+    background-color:  var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 60%), linear-gradient(0deg, rgba(0,0,0,0,2) 50%, rgba(255,255,255,0,0.02) 50%); /* Efecto sutil de scanline */
+    background-size: 100% 100%, 100% 4px;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* --- HEADER ---*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(5, 5, 5, 0.9);
+    border-bottom: 2px solid var(--primary);
+    box-shadow: 0 5px 20px rgba(0, 243, 255, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    margin: 0;
+    text-shadow: var(--glow-primary);
+    transition:  0.3s;
+}
+
+header h1:hover {
+    text-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+}
+
+/* --- NAVEGACIÓN --- */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover estilo botón tecnológico */
+nav a:hover {
+    color: #fff;
+    background: rgba(0, 243, 255, 0.1);
+    border-color: var(--primary);
+    box-shadow: var(--glow-secundary);
+    transform: skewX(-10deg); /* Inclina un poco el botón */
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.content-wrapper {
+    flex: 1; /* Empuja el footer hacia abajo */
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    font-size: 2.5rem;
+    border-left: 5px solid var(--secondary);
+    padding-left: 15px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size:  1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+/* --- TARJETAS DE EQUIPO Y JUEGOS --- */
+.grind-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: var(--bg-panel);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Borde brillante al pasar el mouse */
+.card:hover {
+    border-color: var(--secondary);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(189, 0, 255, 0.2);
+}
+
+.card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    margin-top: 0;
+}
+
+.role {
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+/* --- BOTONES --- */
+button, .btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 12px 30px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    clip-path: polygon(10% 0, 100% 80%, 90% 100%, 0 100, 0 20%); /* Forma recortada Sci-Fi */
+}
+
+button:hover, .btn:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: var(--glow-primary);
+}
+
+button:disabled {
+    border-color: #555;
+    color: #555;
+    cursor: not-allowed;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #08080a;
+    border-top: 1px solid #333;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* --- ESTILOS DEL MODAL (VENTANA EMERGENTE) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2000; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo negro semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #13131f;
+    margin: 5% auto; /* Centrado vertical */
+    padding: 0;
+    border: 1px solid var(--primary); /* Borde Cian */
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    position: relative;
+    animation: slideDown 0.4s;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Cabecera del Modal */
+.modal-header {
+    background: rgba(0, 243, 255, 0.1);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    border: none; /* Quitamos el borde izquierdo que usamos en h2 generales */
+    padding: 0;
+}
+
+/* Botón de Cerrar (X) */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Cuerpo del Modal */
+.modal-body {
+    padding: 20px;
+    color: var(--text-main);
+}
+
+/* Contenedor de Video/Imagen */
+.media-container {
+    width: 100%;
+    height: 300px; /* Ajustable */
+    background: #000;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+}
+
+/* Botón de Steam Específico */
+.steam-btn {
+    background: linear-gradient(45deg, #171a21, #2a475e);
+    border: 1px solid #66c0f4;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    display: flex; /* Para poner icono si quisieras */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.steam-btn:hover {
+    background: #66c0f4;
+    color: #000;
+    box-shadow: 0 0 20px rgba(102, 192, 244, 0.6);
+}
+
+/* --- EFECTO DE MONITOR ANTIGUO (SCANLINES) --- */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px; /* Tamaño de las líneas */
+    z-index: 9999; /* Por encima de todo */
+    pointer-events: none; /* Permite dar clicks a travéz de las líneas */
+}
+
+/* --- SCROLLBAR PERSONALIZADO (Chrome, Edge, Safari) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505; /* Fondo negro del riel */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333; /* Color de la barra en reposo */
+    border-radius: 5px;
+    border: 1px solid var(--primary); /* Borde neón */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary); /* Se ilumina al tocarla */
+    box-shadow: 0 0 10px var(--primary);
+}
+
+p {
+    line-height: 1.8; /* Más espacio entre reglones */
+    color: #ccc;/* Un gris un poco más suave que el blanco puro para no cansar la vista */
+}
+
+/* Clase para resaltar palabras importantes en el texto */
+.highlight {
+    color: var(--primary);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+}
+
+/* --- TOQUE FINAL: EFECTO DE MONITOR (Scanlines) --- */
+/* Esto crea unas líneas muy finas sobre la pantalla para dar textura */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none; /* Importante para poder dar clicks a través */
+}
+
+/* --- BARRA DE SCROLL DE NEÓN --- */
+/* Cambia la barra gris fea por una estilo gamer */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 5px;
+    border: 1px solid var(--primary); /* Borde Cian */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary); 
+    box-shadow: 0 0 10px var(--primary); /* Brilla al tocarla */
+}
