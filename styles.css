@@ -1,26 +1,25 @@
-/* --- FUENTES IMPORTADAS --- */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+/* --- FUENTES IMPORTADAS (Premium) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
 
-/* --- VARIABLES DE COLOR (Tema Cyberpunk) --- */
+/* --- VARIABLES DE COLOR (Tema Corporativo Premium) --- */
 :root {
-    --bg-dark: #050505;  /* Negro casi puro */
-    --bg-panel: #13131f; /* Azul oscuro para tarjetas */
-    --primary: #00f3ff; /* Cian Neón */
-    --secondary: #bd00ff; /* Violeta Neón */
-    --text-main: #e0e6ed; /* Blanco/Gris claro */
-    --text-dim: #94a3b8; /* Gris apagado */
-    --glow-primary: 0 0 10px rgba(0, 243, 255, 0.6), 0 0 20px rgba(0, 243, 255, 0.3);
-    --glow-secundary: 0 0 10px rgba(189, 0, 255, 0.6), 0 0 20px rgba(189, 0, 255, 0.3);
+    --bg-dark: #0a0a0a;  /* Negro profundo y elegante */
+    --bg-panel: #141414; /* Gris ultra oscuro para tarjetas */
+    --primary: #D4AF37;  /* Dorado Premium */
+    --primary-dim: #AA8C2C; /* Dorado oscuro para bordes sutiles */
+    --text-main: #f5f5f5; /* Blanco humo para fácil lectura */
+    --text-dim: #a0a0a0; /* Gris plata para detalles */
+    --glow-soft: 0 10px 30px rgba(0, 0, 0, 0.8); /* Sombra elegante, no neón */
 }
 
 /* --- ESTILOS GENERALES --- */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Rajdhani', sans-serif; /* Fuente tecnológica pero legible */
-    background-color:  var(--bg-dark);
-    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 60%), linear-gradient(0deg, rgba(0,0,0,0,2) 50%, rgba(255,255,255,0,0.02) 50%); /* Efecto sutil de scanline */
-    background-size: 100% 100%, 100% 4px;
+    font-family: 'Montserrat', sans-serif; /* Limpia y moderna */
+    background-color: var(--bg-dark);
+    /* Un gradiente sutil de fondo para dar profundidad, sin texturas raras */
+    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, var(--bg-dark) 70%); 
     color: var(--text-main);
     display: flex;
     flex-direction: column;
@@ -37,211 +36,233 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background: rgba(5, 5, 5, 0.9);
-    border-bottom: 2px solid var(--primary);
-    box-shadow: 0 5px 20px rgba(0, 243, 255, 0.15);
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Línea dorada súper sutil */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-family: 'Playfair Display', serif; /* Fuente de lujo */
+    font-size: 26px;
+    letter-spacing: 2px;
     color: #fff;
     margin: 0;
-    text-shadow: var(--glow-primary);
-    transition:  0.3s;
+    transition: 0.3s ease;
 }
 
-header h1:hover {
-    text-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+header h1 span {
+    color: var(--primary); /* Para que "Dominion" sea blanco y "Entertainment" dorado, si usas span */
 }
 
 /* --- NAVEGACIÓN --- */
 nav {
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 nav a {
     text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
     text-transform: uppercase;
+    letter-spacing: 2px;
     color: var(--text-dim);
-    padding: 8px 16px;
-    border: 1px solid transparent;
+    padding: 5px 0;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
 }
 
-/* Efecto hover estilo botón tecnológico */
+/* Efecto hover: Subrayado dorado elegante */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
 nav a:hover {
-    color: #fff;
-    background: rgba(0, 243, 255, 0.1);
-    border-color: var(--primary);
-    box-shadow: var(--glow-secundary);
-    transform: skewX(-10deg); /* Inclina un poco el botón */
+    color: var(--primary);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 /* --- CONTENIDO PRINCIPAL --- */
 .content-wrapper {
-    flex: 1; /* Empuja el footer hacia abajo */
-    max-width: 1000px;
+    flex: 1; 
+    max-width: 1100px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
 h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--primary);
-    font-size: 2.5rem;
-    border-left: 5px solid var(--secondary);
-    padding-left: 15px;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+    font-size: 2.8rem;
     margin-bottom: 30px;
-    text-transform: uppercase;
+    text-align: center; /* Títulos centrados se ven más corporativos */
+    font-weight: 600;
+}
+
+/* Pequeño adorno dorado debajo de los títulos principales */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary);
+    margin: 15px auto 0;
 }
 
 p {
-    font-size:  1.1rem;
+    font-size: 1.05rem;
     line-height: 1.8;
-    color: var(--text-main);
+    color: var(--text-dim);
     margin-bottom: 20px;
+    font-weight: 300;
 }
 
-/* --- TARJETAS DE EQUIPO Y JUEGOS --- */
+/* --- TARJETAS (Servicios / Juegos / Equipo) --- */
 .grind-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .card {
     background: var(--bg-panel);
-    padding: 30px;
-    border-radius: 8px;
-    border: 1px solid #333;
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde casi invisible */
     transition: all 0.4s ease;
     position: relative;
-    overflow: hidden;
 }
 
-/* Borde brillante al pasar el mouse */
 .card:hover {
-    border-color: var(--secondary);
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(189, 0, 255, 0.2);
+    border-color: rgba(212, 175, 55, 0.4); /* Se ilumina en dorado sutil */
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
 }
 
 .card h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    font-size: 1.5rem;
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .role {
-    color: var(--primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+    color: var(--text-dim);
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
     display: block;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 /* --- BOTONES --- */
 button, .btn {
     background: transparent;
-    border: 2px solid var(--primary);
+    border: 1px solid var(--primary);
     color: var(--primary);
-    padding: 12px 30px;
-    font-family: 'Orbitron', sans-serif;
+    padding: 14px 35px;
+    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.4s ease;
     text-decoration: none;
     display: inline-block;
-    margin-top: 10px;
-    clip-path: polygon(10% 0, 100% 80%, 90% 100%, 0 100, 0 20%); /* Forma recortada Sci-Fi */
+    margin-top: 15px;
+    border-radius: 4px; /* Bordes ligeramente redondeados, muy corporativo */
 }
 
 button:hover, .btn:hover {
     background: var(--primary);
-    color: #000;
-    box-shadow: var(--glow-primary);
+    color: #000; /* Contraste fuerte */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
 }
 
 button:disabled {
-    border-color: #555;
+    border-color: #333;
     color: #555;
     cursor: not-allowed;
     background: transparent;
     box-shadow: none;
+    transform: none;
 }
 
 /* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #08080a;
-    border-top: 1px solid #333;
-    color: #666;
-    font-size: 0.9rem;
+    padding: 30px 20px;
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
+    font-size: 0.85rem;
     margin-top: auto;
+    letter-spacing: 1px;
 }
 
 /* --- ESTILOS DEL MODAL (VENTANA EMERGENTE) --- */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed;
-    z-index: 2000; /* Por encima de todo */
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.85); /* Fondo negro semi-transparente */
-    backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
+    background-color: rgba(0, 0, 0, 0.9); 
+    backdrop-filter: blur(8px);
     animation: fadeIn 0.3s;
 }
 
 .modal-content {
-    background-color: #13131f;
-    margin: 5% auto; /* Centrado vertical */
+    background-color: var(--bg-panel);
+    margin: 8% auto;
     padding: 0;
-    border: 1px solid var(--primary); /* Borde Cian */
-    width: 80%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 90%;
     max-width: 800px;
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9);
     position: relative;
     animation: slideDown 0.4s;
+    overflow: hidden;
 }
 
-/* Animaciones de entrada */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
 @keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
+    from { transform: translateY(-30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Cabecera del Modal */
 .modal-header {
-    background: rgba(0, 243, 255, 0.1);
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--primary);
+    background: rgba(20, 20, 20, 0.95);
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -249,154 +270,96 @@ footer {
 
 .modal-header h2 {
     margin: 0;
-    font-size: 1.5rem;
-    border: none; /* Quitamos el borde izquierdo que usamos en h2 generales */
-    padding: 0;
+    font-size: 1.8rem;
+    color: var(--primary);
 }
 
-/* Botón de Cerrar (X) */
+.modal-header h2::after {
+    display: none; /* Quitamos la rayita dorada solo en el modal */
+}
+
 .close-btn {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+    color: #666;
+    font-size: 32px;
+    font-weight: 300;
     cursor: pointer;
-    transition: 0.3s;
+    transition: color 0.3s;
+    line-height: 1;
 }
 
 .close-btn:hover {
     color: var(--primary);
-    text-shadow: 0 0 10px var(--primary);
 }
 
-/* Cuerpo del Modal */
 .modal-body {
-    padding: 20px;
-    color: var(--text-main);
+    padding: 30px;
+    color: var(--text-dim);
 }
 
-/* Contenedor de Video/Imagen */
 .media-container {
     width: 100%;
-    height: 300px; /* Ajustable */
+    height: 350px;
     background: #000;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* Botón de Steam Específico */
+/* Botón de Steam (Adaptado a diseño elegante) */
 .steam-btn {
-    background: linear-gradient(45deg, #171a21, #2a475e);
-    border: 1px solid #66c0f4;
+    background: #111;
+    border: 1px solid #333;
     color: #fff;
     width: 100%;
     text-align: center;
     margin-top: 20px;
-    display: flex; /* Para poner icono si quisieras */
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
 .steam-btn:hover {
-    background: #66c0f4;
-    color: #000;
-    box-shadow: 0 0 20px rgba(102, 192, 244, 0.6);
-}
-
-/* --- EFECTO DE MONITOR ANTIGUO (SCANLINES) --- */
-body::before {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px; /* Tamaño de las líneas */
-    z-index: 9999; /* Por encima de todo */
-    pointer-events: none; /* Permite dar clicks a travéz de las líneas */
-}
-
-/* --- SCROLLBAR PERSONALIZADO (Chrome, Edge, Safari) --- */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #050505; /* Fondo negro del riel */
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333; /* Color de la barra en reposo */
-    border-radius: 5px;
-    border: 1px solid var(--primary); /* Borde neón */
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary); /* Se ilumina al tocarla */
-    box-shadow: 0 0 10px var(--primary);
-}
-
-p {
-    line-height: 1.8; /* Más espacio entre reglones */
-    color: #ccc;/* Un gris un poco más suave que el blanco puro para no cansar la vista */
+    background: #1a1a1a;
+    border-color: #fff;
+    color: #fff;
 }
 
 /* Clase para resaltar palabras importantes en el texto */
 .highlight {
     color: var(--primary);
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+    font-weight: 600;
 }
 
-/* --- TOQUE FINAL: EFECTO DE MONITOR (Scanlines) --- */
-/* Esto crea unas líneas muy finas sobre la pantalla para dar textura */
-body::before {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px;
-    z-index: 9999;
-    pointer-events: none; /* Importante para poder dar clicks a través */
-}
-
-/* --- BARRA DE SCROLL DE NEÓN --- */
-/* Cambia la barra gris fea por una estilo gamer */
+/* --- SCROLLBAR PERSONALIZADO --- */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #050505; 
+    background: var(--bg-dark); 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333; 
-    border-radius: 5px;
-    border: 1px solid var(--primary); /* Borde Cian */
+    background: #222; 
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary); 
-    box-shadow: 0 0 10px var(--primary); /* Brilla al tocarla */
+    background: var(--primary-dim); 
 }
 
-/* --- MENÚ HAMBURGUESA (Oculto en PC por defecto) --- */
+/* --- MENÚ HAMBURGUESA --- */
 .menu-toggle {
     display: none;
+    background: none;
+    border: none;
     color: var(--primary);
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
-    text-shadow: var(--glow-primary);
     transition: 0.3s;
 }
 
@@ -404,36 +367,35 @@ body::before {
     color: #fff;
 }
 
-/* --- MODO CELULAR (Se activa si la pantalla es menor a 768px) --- */
+/* --- MODO CELULAR --- */
 @media (max-width: 768px) {
     header {
-        flex-wrap: wrap; /* Permite que el menú caiga hacia abajo */
         padding: 15px 5%;
     }
 
-    header h1 {
-        font-size: 18px; /* Título más pequeño para que no choque */
-    }
-
     .menu-toggle {
-        display: block; /* Muestra las 3 rayitas */
+        display: block; 
     }
 
     nav {
-        display: none; /* Oculta el menú normal */
+        display: none; 
         width: 100%;
-        flex-direction: column; /* Pone los botones uno debajo del otro */
+        position: absolute;
+        top: 65px;
+        left: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
         text-align: center;
-        margin-top: 15px;
-        gap: 10px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--primary-dim);
     }
 
     nav a  {
-        display: block; /* Hace que el botón sea más facil de tocar */
-        padding: 12px;
+        display: block; 
+        padding: 15px;
+        font-size: 15px;
     }
 
-    /* Esta clase es la que encenderá el JavaScript */
     nav.active {
         display: flex;
         animation: fadeIn 0.3s ease;
