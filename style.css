@@ -1,0 +1,426 @@
+/* --- FUENTES IMPORTADAS --- */
+/* Añadí los grosores 500 y 600 para lograr el peso intermedio exacto */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Orbitron:wght@500;700&family=Quicksand:wght@600;700&display=swap');
+
+/* --- VARIABLES DE COLOR --- */
+:root {
+    --bg-dark: #0a0a0a;  
+    --bg-panel: #141414; 
+    --primary: #D4AF37;  
+    --primary-dim: #AA8C2C; 
+    --text-main: #f5f5f5; 
+    --text-dim: #a0a0a0; 
+    --glow-soft: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* --- ESTILOS GENERALES --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, var(--bg-dark) 70%); 
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* --- HEADER Y NAVEGACIÓN ---*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    transition: transform 0.4s ease-in-out; 
+}
+
+/* Animación al hacer scroll hacia abajo */
+header.nav-hidden {
+    transform: translateY(-100%);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600; /* <-- Grosor intermedio para el Logo */
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    letter-spacing: 2px;
+    color: #fff;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* <-- Grosor intermedio para el menú (antes 400) */
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    padding: 5px 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a.enlace-menu::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+nav a.enlace-menu:hover { color: var(--primary); }
+nav a.enlace-menu:hover::after { width: 100%; }
+nav a.activo { color: var(--primary); border-bottom: 1px solid var(--primary); }
+
+/* --- SELECTOR DE IDIOMA --- */
+.lang-switch {
+    display: flex;
+    gap: 10px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 20px;
+    margin-left: 10px;
+}
+.lang-switch a {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+.lang-switch a.active { color: var(--primary); pointer-events: none; }
+
+/* --- BOTÓN FLOTANTE KO-FI --- */
+.floating-kofi {
+    position: fixed;
+    bottom: 25px; 
+    right: 25px;
+    background-color: #FF5E5B; 
+    color: #fff !important;
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 13px; 
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 94, 91, 0.3); 
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.floating-kofi:hover {
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 6px 20px rgba(255, 94, 91, 0.5);
+    background-color: #ff4744;
+}
+
+.floating-kofi svg {
+    width: 18px; 
+    height: 18px;
+    fill: currentColor;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.content-wrapper {
+    flex: 1; 
+    width: 100%;
+    max-width: 1100px;
+    margin: 80px auto 40px auto; 
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary);
+    margin: 15px auto 0;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* --- TARJETAS --- */
+.grind-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.card {
+    background: var(--bg-panel);
+    padding: 35px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+.card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.role {
+    color: var(--text-dim);
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- BOTONES GLOBALES --- */
+button, .btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+button:hover, .btn:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- FOOTER SÚPER DELGADO --- */
+footer {
+    text-align: center;
+    padding: 12px 20px 10px; /* Padding reducido al mínimo */
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
+    font-size: 0.75rem; 
+    margin-top: auto;
+    letter-spacing: 1px;
+}
+
+.footer-socials {
+    margin-bottom: 5px; /* Margen drásticamente reducido */
+}
+
+.footer-socials a {
+    color: var(--text-dim);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-socials a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-socials svg {
+    width: 20px; /* Icono sutilmente más pequeño */
+    height: 20px;
+}
+
+/* ELIMINAMOS MÁRGENES INVISIBLES DEL TEXTO */
+footer p {
+    margin: 0; /* Esto es lo que hacía el copy tan grueso */
+    padding-top: 5px;
+}
+
+/* --- MODAL Y PLACEHOLDER "EN DESARROLLO" --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--bg-panel);
+    margin: 5% auto;
+    padding: 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+    position: relative;
+    animation: slideDown 0.4s;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 { margin: 0; font-size: clamp(1.1rem, 3vw, 1.5rem); color: var(--primary); }
+.modal-header h2::after { display: none; }
+
+.close-btn { color: #666; font-size: 28px; font-weight: 300; cursor: pointer; transition: color 0.3s; line-height: 1; }
+.close-btn:hover { color: var(--primary); }
+
+.modal-body { padding: 25px; color: var(--text-dim); }
+
+.media-container {
+    width: 100%;
+    height: 350px;
+    background: #000;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* CAJA DE CLASIFICADO / MUY PRONTO */
+.classified-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: repeating-linear-gradient(45deg, #050505, #050505 10px, #0a0a0a 10px, #0a0a0a 20px);
+    border: 1px dashed var(--primary-dim);
+    text-align: center;
+    padding: 20px;
+}
+
+.classified-placeholder h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.classified-placeholder p {
+    color: #ff5e5b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin: 0;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker { 50% { opacity: 0.3; } }
+.highlight { color: var(--primary); font-weight: 600; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dim); }
+
+/* --- MENÚ HAMBURGUESA Y RESPONSIVO --- */
+.menu-toggle {
+    display: none;
+    color: var(--primary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+}
+
+@media (max-width: 900px) {
+    .menu-toggle { display: block; }
+    
+    nav {
+        display: none; 
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--primary-dim);
+        gap: 15px;
+    }
+
+    nav.active { display: flex; animation: fadeIn 0.3s ease; }
+    
+    .lang-switch {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-left: 0;
+        padding-top: 15px;
+        margin-left: 0;
+        justify-content: center;
+    }
+    
+    .floating-kofi {
+        bottom: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    .floating-kofi svg {
+        width: 14px;
+        height: 14px;
+    }
+}

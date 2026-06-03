@@ -1,27 +1,34 @@
-// Función para abrir el modal
+// --- LÓGICA DEL MENÚ OCULTO AL HACER SCROLL ---
+let lastScrollTop = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Si bajamos el scroll y ya pasamos la altura del header (60px)
+    if (scrollTop > lastScrollTop && scrollTop > 60) {
+        header.classList.add("nav-hidden"); // Esconder
+    } else {
+        header.classList.remove("nav-hidden"); // Mostrar
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// --- FUNCIONES DEL JUEGO (MODAL) ---
 function openGame() {
     const modal = document.getElementById("gameModal");
     modal.style.display = "block";
-    // Bloquear el scroll de la página de fondo
-    document.body.style.overflow = "hidden"; 
+    document.body.style.overflow = "hidden"; // Bloquear scroll de fondo
 }
 
-// Función para cerrar el modal
 function closeGame() {
     const modal = document.getElementById("gameModal");
     modal.style.display = "none";
-    // Reactivar el scroll
-    document.body.style.overflow = "auto"; 
+    document.body.style.overflow = "auto"; // Reactivar scroll
 }
 
-// Función para ir a Steam
-function goToSteam() {
-    // Reemplaza esto con tu link real cuando lo tengas
-    window.open("https://store.steampowered.com/", "_blank");
-}
-
-// CERRAR AL DAR CLICK AFUERA:
-// Esto detecta si el usuario hace click en la zona oscura (fuera de la caja)
+// Cerrar al dar click afuera de la caja del modal
 window.onclick = function(event) {
     const modal = document.getElementById("gameModal");
     if (event.target == modal) {
@@ -29,9 +36,8 @@ window.onclick = function(event) {
     }
 }
 
-// --- FUNCIÓN PARA EL MENÚ DE CELULARES (HAMBURGUESA) ---
+// --- MENÚ HAMBURGUESA ---
 function toggleMenu() {
     const nav = document.getElementById("navMenu");
-    // "toggle" funciona como un interruptor: si está apagado lo prende, si está prendido lo apaga.
     nav.classList.toggle("active");
 }
